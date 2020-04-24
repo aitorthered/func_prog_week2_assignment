@@ -117,6 +117,7 @@ class FunSetSuite {
       assertEquals(false, contains(s, 3))
     }
   }
+
   @Test def `diff s1 union s2 diff s1`: Unit = {
     new TestSets {
       val s = diff(union(s1, s2), s1)
@@ -126,6 +127,23 @@ class FunSetSuite {
     }
   }
 
+  @Test def `filter 3 sets with x<2`: Unit = {
+    new TestSets {
+      val s = filter(union(union(s1, s2), s3), x => x < 2)
+      assertEquals(true, contains(s, 1))
+      assertEquals(false, contains(s, 2))
+      assertEquals(false, contains(s, 3))
+    }
+  }
+
+  @Test def `filter 3 sets with x!=2`: Unit = {
+    new TestSets {
+      val s = filter(union(union(s1, s2), s3), x => x != 2)
+      assertEquals(true, contains(s, 1))
+      assertEquals(false, contains(s, 2))
+      assertEquals(true, contains(s, 3))
+    }
+  }
 
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(10 * 1000)
 }
