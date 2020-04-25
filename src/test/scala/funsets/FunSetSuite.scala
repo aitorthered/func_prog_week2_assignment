@@ -145,5 +145,26 @@ class FunSetSuite {
     }
   }
 
+  @Test def `forall a>0`: Unit = {
+    new TestSets {
+      val s = (union(union(s1, s2), s3))
+      assertEquals(true, forall(s, x => x > 0))
+    }
+  }
+
+  @Test def `forall a>1`: Unit = {
+    new TestSets {
+      val s = (union(union(s1, s2), s3))
+      assertEquals(false, forall(s, x => x > 1))
+    }
+  }
+
+  @Test def `forall a!= 2`: Unit = {
+    new TestSets {
+      val s = union(s1, s3)
+      assertEquals(true, forall(s, x => x != 2))
+    }
+  }
+
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(10 * 1000)
 }
