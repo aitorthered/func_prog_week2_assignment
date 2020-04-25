@@ -188,5 +188,15 @@ class FunSetSuite {
     }
   }
 
+  @Test def `map x = x+2`: Unit = {
+    new TestSets {
+      val s = union(s1, s2)
+      assertEquals(false, map(s, x => x + 2)(1))
+      assertEquals(false, map(s, x => x + 2)(2))
+      assertEquals(true, map(s, x => x + 2)(3))
+      assertEquals(true, map(s, x => x + 2)(4))
+    }
+  }
+
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(10 * 1000)
 }

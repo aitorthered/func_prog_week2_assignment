@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/home/yas/functional_programming/week2/funsets/src/main/scala/funsets/FunSets.scala:91:4: ';' expected but 'if' found.[0m
+[0m[[0m[31merror[0m] [0m[0m  }if(s(x)) s(f(x)) else false[0m
+[0m[[0m[31merror[0m] [0m[0m   ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

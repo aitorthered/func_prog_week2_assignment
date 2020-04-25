@@ -80,7 +80,15 @@ trait FunSets extends FunSetsInterface {
   /**
    * Returns a set transformed by applying `f` to each element of `s`.
    */
-  def map(s: FunSet, f: Int => Int): FunSet = ???
+  def map(s: FunSet, f: Int => Int): FunSet = (x:Int) =>  {
+    def iter(a: Int, found: Boolean): Boolean = {
+      if (found || a>bound) found
+      else if (s(a)) iter(a+1, (x == f(a)))
+      else iter(a+1, found)
+    }
+
+    iter(-bound, false)
+  }
 
   /**
    * Displays the contents of a set
