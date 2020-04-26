@@ -68,13 +68,14 @@ trait FunSets extends FunSetsInterface {
    * that satisfies `p`.
    */
   def exists(s: FunSet, p: Int => Boolean): Boolean = {
-    def iter(a: Int): Boolean = {
+    /*def iter(a: Int): Boolean = {
       if (a>bound) false
       else if (s(a) && p(a)) true // This is the same as calling the filter function
       else iter(a+1)
     }
 
-    iter(-bound)
+    iter(-bound)*/
+    !forall(s, (x: Int) => !(p(x)))
   }
 
   /**
